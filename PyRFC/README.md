@@ -12,7 +12,7 @@ source $HOME/packages/pyrfc_venv/bin/activate
 ```
 
 # SAP Dependencies
-download nwrfcsdk tool kit using [SAP NetWeaver RFC SDK](https://me.sap.com/swdcnav/products/_APP=00200682500000001943&_EVENT=DISPHIER&HEADER=Y&FUNCTIONBAR=N&EVENT=TREE&NE=NAVIGATE&ENR=01200314690100002214&V=MAINT)
+download nwrfcsdk tool kit from [SAP NetWeaver RFC SDK Download](https://me.sap.com/swdcnav/products/_APP=00200682500000001943&_EVENT=DISPHIER&HEADER=Y&FUNCTIONBAR=N&EVENT=TREE&NE=NAVIGATE&ENR=01200314690100002214&V=MAINT)
 
 unzip the nwrfc750P_*.zip
 
@@ -27,9 +27,7 @@ export LD_LIBRARY_PATH="$SAPNWRFC_HOME/lib"
 ```
 
 # PyRFC Installation
-download pyrfc using below link
-
-https://github.com/SAP-archive/PyRFC/releases/download/v3.3.1/pyrfc-3.3.1-cp312-cp312-linux_x86_64.whl
+download pyrfc using below from [PyRFC Download](https://github.com/SAP-archive/PyRFC/releases/download/v3.3.1/pyrfc-3.3.1-cp312-cp312-linux_x86_64.whl)
 
 Copy pyrfc to $HOME/packages/pyrfc_venv directory
 
