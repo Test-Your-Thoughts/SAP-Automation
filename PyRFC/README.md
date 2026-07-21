@@ -15,9 +15,9 @@ source $HOME/packages/pyrfc_venv/bin/activate
 download nwrfcsdk tool kit using below link
 https://me.sap.com/swdcnav/products/_APP=00200682500000001943&_EVENT=DISPHIER&HEADER=Y&FUNCTIONBAR=N&EVENT=TREE&NE=NAVIGATE&ENR=01200314690100002214&V=MAINT
 
-unzip the nwrfc750P_*.zip
-copy the nwrfcsdk directory to $HOME/packages directory
-set environment varibles using below commands
+unzip the nwrfc750P_*.zip;
+copy the nwrfcsdk directory to $HOME/packages directory;
+set environment varibles using below commands;
 ```
 chmod -R 750 $HOME/packages/nwrfcsdk
 export SAPNWRFC_HOME="$HOME/packages/nwrfcsdk"
