@@ -27,7 +27,11 @@
 
   ```
   chmod -R 750 ${HOME}/packages/nwrfcsdk
+  ```
+  ```
   export SAPNWRFC_HOME="${HOME}/packages/nwrfcsdk"
+  ```
+  ```
   export LD_LIBRARY_PATH="${SAPNWRFC_HOME}/lib"
   ```
 # PyRFC Installation
@@ -37,6 +41,8 @@
 
   ```
   pip install --upgrade pip
+  ```
+  ```
   pip install "${HOME}/packages/pyrfc_venv/pyrfc-3.3.1-cp312-cp312-linux_x86_64.whl"
   ```
 # Test PyRFC Installation
