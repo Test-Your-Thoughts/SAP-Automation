@@ -68,7 +68,7 @@
   wget https://github.com/SAP-archive/PyRFC/releases/download/v3.3.1/pyrfc-3.3.1-cp312-cp312-linux_x86_64.whl
 
   ```
-- alternatively download from [PyRFC Download](https://github.com/SAP-archive/PyRFC/releases/download/v3.3.1/pyrfc-3.3.1-cp312-cp312-linux_x86_64.whl) and place it in $HOME/packages/pyrfc_venv directory
+- alternate approach download the wheel file from [PyRFC Download](https://github.com/SAP-archive/PyRFC/releases/download/v3.3.1/pyrfc-3.3.1-cp312-cp312-linux_x86_64.whl) and place it in $HOME/packages/pyrfc_venv directory
 - install pyrfc using pip
 
   ```
