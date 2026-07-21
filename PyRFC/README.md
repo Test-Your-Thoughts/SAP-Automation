@@ -12,7 +12,7 @@ source $HOME/packages/pyrfc_venv/bin/activate
 ```
 
 # SAP Dependencies
-download nwrfcsdk tool kit using below link [SAP NetWeaver RFC SDK](https://me.sap.com/swdcnav/products/_APP=00200682500000001943&_EVENT=DISPHIER&HEADER=Y&FUNCTIONBAR=N&EVENT=TREE&NE=NAVIGATE&ENR=01200314690100002214&V=MAINT)
+download nwrfcsdk tool kit using [SAP NetWeaver RFC SDK](https://me.sap.com/swdcnav/products/_APP=00200682500000001943&_EVENT=DISPHIER&HEADER=Y&FUNCTIONBAR=N&EVENT=TREE&NE=NAVIGATE&ENR=01200314690100002214&V=MAINT)
 
 unzip the nwrfc750P_*.zip
 
