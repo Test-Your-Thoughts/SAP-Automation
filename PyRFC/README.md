@@ -1,6 +1,6 @@
 # PyRFC Setup Guide for Linux
 # 1. SAP Dependencies.
-NOTE: skip this if pyrfc is being installed on sap server
+NOTE: skip this part if pyrfc is being installed on sap server
 - download nwrfcsdk tool kit from [SAP NetWeaver RFC SDK Download](https://me.sap.com/swdcnav/products/_APP=00200682500000001943&_EVENT=DISPHIER&HEADER=Y&FUNCTIONBAR=N&EVENT=TREE&NE=NAVIGATE&ENR=01200314690100002214&V=MAINT)
 - unzip the nwrfc750P_*.zip and place the nwrfcsdk folder in ${HOME}/ directory of your linux server
 - set environment varibles using below commands
