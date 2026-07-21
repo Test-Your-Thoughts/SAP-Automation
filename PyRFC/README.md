@@ -1,5 +1,5 @@
 # PyRFC Setup for Linux
-  # Python Installation
+  # - Python Installation
   - install python 3.12.11 (last supported version for the latest available pyrfc)
   ```
   pyenv install 3.12.11
