@@ -7,7 +7,7 @@
   chmod -R 750 ${HOME}/nwrfcsdk
   ```
   ```
-  cat << EOF >> ${HOME}/.bashrc
+  cat << 'EOF' >> ${HOME}/.bashrc
 
   # PATH variables for SAP NetWeaver RFC SDK -- PyRFC Compatibilty
   export SAPNWRFC_HOME="${HOME}/nwrfcsdk"
@@ -24,7 +24,7 @@
   ```
 - execute below command add pyenv compatabilty to ${HOME}/.bashrc
   ```
-  cat << EOF >> ${HOME}/.bashrc
+  cat << 'EOF' >> ${HOME}/.bashrc
 
 
   # pyenv compatability
