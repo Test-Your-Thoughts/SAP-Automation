@@ -25,7 +25,7 @@ set environment varibles using below commands
 ```
 chmod -R 750 $HOME/packages/nwrfcsdk
 export SAPNWRFC_HOME="$HOME/packages/nwrfcsdk"
-export LD_LIBRARY_PATH=$SAPNWRFC_HOME/lib
+export LD_LIBRARY_PATH="$SAPNWRFC_HOME/lib"
 ```
 
 # PyRFC Installation
