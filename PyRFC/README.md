@@ -1,10 +1,12 @@
 # Python Installation
 - get pyenv from [how to install pyenv](https://github.com/pyenv/pyenv#installation)
 - install python 3.12.11 (last supported version for the latest available pyrfc)
-```
-pyenv install 3.12.11
-${HOME}/.pyenv/versions/3.12.11/bin/python3 --version
-```
+
+
+  ```
+  pyenv install 3.12.11
+  ${HOME}/.pyenv/versions/3.12.11/bin/python3 --version
+  ```
 - create a virtual environment
 ```
 mkdir ${HOME}/packages
