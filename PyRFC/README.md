@@ -29,7 +29,7 @@
 
   # pyenv compatability
 
-  export PYENV_ROOT="$HOME/.pyenv"
+  export PYENV_ROOT="${HOME}/.pyenv"
   [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init - bash)"
 
@@ -39,7 +39,7 @@
   ```
 - source the file for the changes to become effective in the current sheell environment
   ```
-  source $HOME/.bashrc
+  source ${HOME}/.bashrc
   ```
 - install python 3.12.11 (last supported version for the latest available pyrfc)
 
@@ -68,7 +68,7 @@
   wget https://github.com/SAP-archive/PyRFC/releases/download/v3.3.1/pyrfc-3.3.1-cp312-cp312-linux_x86_64.whl
 
   ```
-- alternate approach download the wheel file from [PyRFC Download](https://github.com/SAP-archive/PyRFC/releases/download/v3.3.1/pyrfc-3.3.1-cp312-cp312-linux_x86_64.whl) and place it in $HOME/packages/pyrfc_venv directory
+- alternate approach download the wheel file from [PyRFC Download](https://github.com/SAP-archive/PyRFC/releases/download/v3.3.1/pyrfc-3.3.1-cp312-cp312-linux_x86_64.whl) and place it in ${HOME}/packages/pyrfc_venv directory
 - install pyrfc using pip
 
   ```
