@@ -11,10 +11,9 @@ NOTE: skip this if pyrfc is being installed on sap server
   ```
   cat << 'EOF' >> ${HOME}/.bashrc
 
-  # PATH variables for SAP NetWeaver RFC SDK -- PyRFC Compatibilty
+  # PATH variables for SAP NetWeaver RFC SDK -- for PyRFC Compatibilty
   export SAPNWRFC_HOME="${HOME}/nwrfcsdk"
   export LD_LIBRARY_PATH="${SAPNWRFC_HOME}/lib"
-
 
   EOF
   
@@ -28,13 +27,10 @@ NOTE: skip this if pyrfc is being installed on sap server
   ```
   cat << 'EOF' >> ${HOME}/.bashrc
 
-
-  # pyenv compatability
-
+  # Set varaibles -- for pyenv compatability
   export PYENV_ROOT="${HOME}/.pyenv"
   [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init - bash)"
-
 
   EOF
 
