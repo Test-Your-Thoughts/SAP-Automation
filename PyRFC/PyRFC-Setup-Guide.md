@@ -1,5 +1,5 @@
 # Python Installation
-- get pyenv from [how to install pyenv](https://github.com/pyenv/pyenv#a-getting-pyenv)
+- get pyenv from [how to install pyenv](https://github.com/pyenv/pyenv#installation)
 - install python 3.12.11 (last supported version for the latest available pyrfc)
 ```
 pyenv install 3.12.11
