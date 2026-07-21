@@ -4,13 +4,19 @@
 
   ```
   pyenv install 3.12.11
+  ```
+  ```
   ${HOME}/.pyenv/versions/3.12.11/bin/python3 --version
   ```
 - create a virtual environment
 
   ```
   mkdir ${HOME}/packages
+  ```
+  ```
   ${HOME}/.pyenv/versions/3.12.11/bin/python3 -m venv ${HOME}/packages/pyrfc_venv
+  ```
+  ```
   source ${HOME}/packages/pyrfc_venv/bin/activate
   ```
 # SAP Dependencies
