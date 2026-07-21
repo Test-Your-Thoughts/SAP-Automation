@@ -47,6 +47,7 @@
   ```
 # Test PyRFC Installation
 - execute below command to test successful installation of pyrfc (output should return nothing)
+
   ```
   python3 -c "import pyrfc"
   ```
