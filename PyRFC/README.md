@@ -40,6 +40,8 @@ NOTE: skip this part if pyrfc is being installed on sap server
   source ${HOME}/.bashrc
   ```
 - install python 3.12.11 (last supported version for the latest available pyrfc)
+  
+  NOTE: pyenv expects some dependencies to be installed for python-build, please refer [Install Python build dependencies](https://github.com/pyenv/pyenv/wiki#suggested-build-environment) for more details
 
   ```
   pyenv install 3.12.11
