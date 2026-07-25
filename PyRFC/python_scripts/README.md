@@ -17,22 +17,6 @@ A command-line utility to execute a single SAP Remote Function Call (RFC) agains
   - `LD_LIBRARY_PATH` (Linux) configured to include the SDK's `lib` directory
 - Network access and valid credentials to the target SAP system
 
-### Installing dependencies
-
-```bash
-pip install pyrfc
-```
-
-> Note: `pyrfc` requires the SAP NetWeaver RFC SDK to be installed separately and is not distributed via PyPI in all environments — refer to SAP's official documentation/SAP Store for the SDK download.
-
-## Installation
-
-```bash
-git clone <repo-url>
-cd <repo-directory>
-pip install -r requirements.txt  # if provided, otherwise: pip install pyrfc
-```
-
 ## Usage
 
 ```bash
@@ -123,7 +107,3 @@ These exit codes make the script convenient to use in shell scripts, CI pipeline
   - Using a secrets manager (e.g. HashiCorp Vault, AWS Secrets Manager)
   - Wrapping this script in a secure launcher that injects credentials without exposing them as CLI arguments
 - **No input sanitization** is performed on `--parameters` beyond JSON validity. Ensure the parameters match the target function module's expected signature before invoking against production systems.
-
-## License
-
-Add your license information here.
