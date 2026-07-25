@@ -1,4 +1,4 @@
-"""
+DOCUMENTATION="""
 sap_exec_abap_function.py
 =========================
 
