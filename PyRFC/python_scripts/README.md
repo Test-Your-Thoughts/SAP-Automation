@@ -3,23 +3,24 @@ sap_exec_abap_function.py
 
 Purpose
 -------
-Command-line utility to execute a single SAP Remote Function Call (RFC)
-against an SAP system using the PyRFC library (SAP NetWeaver RFC SDK
-Python bindings). It opens a connection, invokes the specified RFC-enabled
-function module with JSON-supplied parameters, prints the result as JSON,
-and closes the connection.
+- Command-line utility to execute a single SAP Remote Function Call (RFC)
+- against an SAP system using the PyRFC library (SAP NetWeaver RFC SDK
+- Python bindings). It opens a connection, invokes the specified RFC-enabled
+- function module with JSON-supplied parameters, prints the result as JSON,
+- and closes the connection.
 
-Useful for:
-    - Automating common SAP activities such as certificate renewals, job failure reports, etc...
-    - Ad-hoc testing/invocation of SAP function modules from shell scripts, CI pipelines, or cron jobs.
-    - Quick integration checks without writing a dedicated ABAP report.
-    - Piping SAP RFC output into other JSON-consuming tools (jq, Python, Node.js, etc.).
+Useful for
+----------
+- Automating common SAP activities such as certificate renewals, job failure reports, etc...
+- Ad-hoc testing/invocation of SAP function modules from shell scripts, CI pipelines, or cron jobs.
+- Quick integration checks without writing a dedicated ABAP report.
+- Piping SAP RFC output into other JSON-consuming tools (jq, Python, Node.js, etc.).
 
 Requirements
 ------------
-    - Python 3.x
-    - pyrfc (https://github.com/SAP/PyRFC) and the SAP NetWeaver RFC SDK installed and configured (SAPNWRFC_HOME / LD_LIBRARY_PATH in linux set).
-    - Network access / valid credentials to the target SAP system.
+- Python 3.x
+- pyrfc (https://github.com/SAP/PyRFC) and the SAP NetWeaver RFC SDK installed and configured (SAPNWRFC_HOME / LD_LIBRARY_PATH in linux set).
+- Network access / valid credentials to the target SAP system.
 
 Connection Parameters
 ----------------------
@@ -43,7 +44,8 @@ RFC Invocation Parameters
 Usage
 -----
 Example: calling a function with parameters
-    python sap_exec_abap_function.py \
+
+    python3 sap_exec_abap_function.py \
         --ashost sapserver.example.com \
         --sysnr 00 \
         --client 800 \
@@ -53,7 +55,8 @@ Example: calling a function with parameters
         --parameters '{"REQUTEXT": "Hello SAP"}'
 
 Example: calling a function with no parameters
-    python sap_exec_abap_function.py \
+
+    python3 sap_exec_abap_function.py \
         --ashost sapserver.example.com \
         --sysnr 00 \
         --client 800 \
@@ -68,10 +71,10 @@ On success, prints the RFC result as indented JSON (non-JSON-serializable values
 
 Security Notes
 ---------------
-    - Passing --passwd on the command line exposes the password in shell
-      history and process listings (e.g. `ps aux`). Consider sourcing
-      credentials from environment variables or a secrets manager and
-      wrapping this script accordingly for production use.
-    - No input sanitization is performed on --parameters beyond JSON
-      validity; ensure the parameters match the target function module's
-      expected signature.
+- Passing --passwd on the command line exposes the password in shell
+  history and process listings (e.g. `ps aux`). Consider sourcing
+  credentials from environment variables or a secrets manager and
+  wrapping this script accordingly for production use.
+- No input sanitization is performed on --parameters beyond JSON
+  validity; ensure the parameters match the target function module's
+  expected signature.
