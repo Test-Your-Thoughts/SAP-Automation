@@ -40,16 +40,16 @@ NOTE: skip this part if pyrfc is being installed on sap server
   ```
   source ${HOME}/.bashrc
   ```
-- install python 3.12.11 (last supported version for the latest available pyrfc)
+- install python 3.12.13 (last supported version for the latest available pyrfc)
   
   NOTE: pyenv expects some dependencies to be installed for python-build, please refer [Install Python build dependencies](https://github.com/pyenv/pyenv/wiki#suggested-build-environment) for more details
 
   ```
-  pyenv install 3.12.11
+  pyenv install 3.12.13
   ```
 - validate successful installation
   ```
-  ${HOME}/.pyenv/versions/3.12.11/bin/python3 --version
+  ${HOME}/.pyenv/versions/3.12.13/bin/python3 --version
   ```
 # 3. PyRFC Installation.
 - create a virtual environment
@@ -58,7 +58,7 @@ NOTE: skip this part if pyrfc is being installed on sap server
   mkdir ${HOME}/packages
   ```
   ```
-  ${HOME}/.pyenv/versions/3.12.11/bin/python3 -m venv ${HOME}/packages/pyrfc_venv
+  ${HOME}/.pyenv/versions/3.12.13/bin/python3 -m venv ${HOME}/packages/pyrfc_venv
   ```
   ```
   source ${HOME}/packages/pyrfc_venv/bin/activate
