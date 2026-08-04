@@ -4,7 +4,7 @@
   gather_facts: false
 
   vars:
-    btp_globalaccount_name: "dc63a141trial-ga"
+    btp_globalaccount_name: ""
     btp_subaccount_name: "devops-ansible-terraform"
     btp_subaccount_region: "us10"
     cloudfoundry_space_name: "python-space"
