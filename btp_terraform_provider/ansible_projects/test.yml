@@ -5,11 +5,11 @@
 
   vars:
     btp_globalaccount_name: ""
-    btp_subaccount_name: "devops-ansible-terraform"
-    btp_subaccount_region: "us10"
-    cloudfoundry_space_name: "python-space"
+    btp_subaccount_name: ""
+    btp_subaccount_region: ""
+    cloudfoundry_space_name: ""
     hana_cloud_admin_user: ""
-    hanadb_instance_name: "hdb-terraform"
+    hanadb_instance_name: ""
     hanadb_schema_password: ""
 
   tasks:
