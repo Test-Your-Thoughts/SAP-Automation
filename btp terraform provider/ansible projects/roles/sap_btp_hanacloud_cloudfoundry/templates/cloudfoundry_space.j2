@@ -1,0 +1,15 @@
+# ===================================
+# Cloud Foundry Space Setup
+# ===================================
+
+# Create Cloud Foundry Space
+resource "cloudfoundry_space" "{{ cloudfoundry_space_name | replace('-', '_') }}" {
+  name       = "{{ cloudfoundry_space_name }}"
+  org        = btp_subaccount_environment_instance.cloud_foundry_environment_instance.platform_id
+  allow_ssh  = false
+
+  depends_on = [
+    btp_subaccount_environment_instance.cloud_foundry_environment_instance
+  ]
+}
+

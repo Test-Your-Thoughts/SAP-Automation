@@ -1,0 +1,16 @@
+# ===================================
+# SAP HANA Cloud User Access Setup
+# ===================================
+
+# Assign 'SAP HANA Cloud Administrator' role collection to user
+resource "btp_subaccount_role_collection_assignment" "hana_admin_role_collection_assignment" {
+  subaccount_id = btp_subaccount.subaccount.id
+  role_collection_name = "SAP HANA Cloud Administrator"
+  user_name            = "{{ hana_cloud_admin_user }}"
+
+  depends_on = [
+    btp_subaccount_subscription.sap_hana_cloud_central_subscription,
+    btp_subaccount_service_instance.hana_cloud_service_instance
+  ]
+}
+

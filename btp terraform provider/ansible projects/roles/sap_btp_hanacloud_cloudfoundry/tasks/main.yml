@@ -1,0 +1,76 @@
+---
+
+- name: create new directory for terraform configuration files
+  ansible.builtin.file:
+    path: "${HOME}/Infra-as-Code/terraform_btp_resources/subaccounts/{{ btp_subaccount_name | regex_replace('\\s+', '_') }}"
+    state: directory
+  register: __create_terraform_directory_for_subaccount
+
+- name: log
+  when: not __create_terraform_directory_for_subaccount['changed']
+  vars:
+    info_msg: "{{ __create_terraform_directory_for_subaccount['path'] }} directory already exists please give unique names for isolation."
+  ansible.builtin.import_role: { name: common_reusable_tasks, tasks_from: info_msg.yml }
+
+- name: render terraform configuration files & create resources
+  when: __create_terraform_directory_for_subaccount['changed']
+  vars:
+    terraform_directory: "{{ __create_terraform_directory_for_subaccount['path'] }}"
+  block:
+
+    - name: log terraform working directory
+      ansible.builtin.debug:
+        var: terraform_directory
+
+    - name: render terraform configfiles
+      vars:
+        jinja2_file_name: "{{ item['jinja2_file_name'] }}"
+        config_objective: "{{ item['config_objective'] }}"
+      ansible.builtin.include_tasks:
+        file: render_terraform_configfile.yml
+      loop:
+        - { jinja2_file_name: "provider_btp.j2"             , config_objective: "Install plugin for btp provider"          }
+        - { jinja2_file_name: "subaccount.j2"               , config_objective: "Creates Subaccount"                       }
+        - { jinja2_file_name: "hanacloud_tools.j2"          , config_objective: "Creates SAP Hana Cloud Central"           }
+        - { jinja2_file_name: "hanacloud_database.j2"       , config_objective: "Creates SAP Hana Cloud Database Instance" }
+        - { jinja2_file_name: "hanacloud_user_access.j2"    , config_objective: "Assigns User Access for SAP Hana Cloud"   }
+        - { jinja2_file_name: "cloudfoundry_environment.j2" , config_objective: "Creates Cloud Foundry Environment"        }
+      loop_control:
+        label: "{{ item['jinja2_file_name'] }}"
+      register: __render_configfiles_terraform_resources
+
+    - ansible.builtin.include_role: { name: terrafrom_orchestrator, tasks_from: main.yml }
+
+    - name: get terraform output vars in JSON format
+      ansible.builtin.shell:
+        executable: /bin/bash
+        chdir: "{{ terraform_directory }}"
+        cmd: terraform output -json -no-color
+      register: __terraform_output_json
+      changed_when: false
+
+    - name: read cloudfoundry api url from terraform output
+      ansible.builtin.set_fact:
+        cloudfoundry_api_url: "{{ (__terraform_output_json['stdout'] | from_json)['cloudfoundry_api_url']['value'] }}"
+
+    - name: log
+      vars:
+        pass_msg: "successfully rendered {{ 'main.tf' }}"
+      ansible.builtin.import_role: { name: common_reusable_tasks, tasks_from: pass_msg.yml }
+
+    - name: render terraform configfiles
+      vars:
+        jinja2_file_name: "{{ item['jinja2_file_name'] }}"
+        config_objective: "{{ item['config_objective'] }}"
+      ansible.builtin.include_tasks:
+        file: render_terraform_configfile.yml
+      loop:
+        - { jinja2_file_name: "provider_btp_cloudfoundry.j2" , config_objective: "Install plugin btp and cloudfoundry providers" }
+        - { jinja2_file_name: "cloudfoundry_space.j2"        , config_objective: "Creates a space in Cloud Foundry Environment"  }
+      loop_control:
+        label: "{{ item['jinja2_file_name'] }}"
+      register: __render_configfiles_terraform_resources
+
+    - ansible.builtin.include_role: { name: terrafrom_orchestrator, tasks_from: main.yml }
+
+...

@@ -1,0 +1,26 @@
+# ===================================
+# SAP HANA Cloud Tools Setup
+# ===================================
+
+# Assign SAP HANA Cloud Tools Entitlement
+resource "btp_subaccount_entitlement" "hana_cloud_tools_entitlement" {
+  subaccount_id = btp_subaccount.subaccount.id
+  service_name  = "hana-cloud-tools"
+  plan_name     = "tools"
+
+  depends_on = [
+    btp_subaccount.subaccount
+  ]
+}
+
+# Create a subscription for SAP Hana Cloud Central
+resource "btp_subaccount_subscription" "sap_hana_cloud_central_subscription" {
+  subaccount_id = btp_subaccount.subaccount.id
+  app_name      = "hana-cloud-tools"
+  plan_name     = "tools"
+
+  depends_on = [
+    btp_subaccount_entitlement.hana_cloud_tools_entitlement
+  ]
+}
+

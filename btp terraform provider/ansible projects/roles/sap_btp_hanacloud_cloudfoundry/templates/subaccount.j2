@@ -1,0 +1,11 @@
+# ===================================
+# Subaccount Setup
+# ===================================
+
+# Create Subaccount
+resource "btp_subaccount" "subaccount" {
+  name      = "{{ btp_subaccount_name }}"
+  subdomain = "${replace("{{ btp_subaccount_name }}", "/\\s+/", "-")}"
+  region    = "{{ btp_subaccount_region }}"
+}
+

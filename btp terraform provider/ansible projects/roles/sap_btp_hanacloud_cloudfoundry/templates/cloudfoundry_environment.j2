@@ -1,0 +1,53 @@
+# ===================================
+# SAP Cloud Foundry Setup
+# ===================================
+
+# Assign Cloud Foundry Environment Entitlement
+resource "btp_subaccount_entitlement" "cloud_foundry_environment_entitlement" {
+  subaccount_id = btp_subaccount.subaccount.id
+  service_name  = "cloudfoundry"
+  plan_name     = "trial"
+
+  depends_on = [
+    btp_subaccount.subaccount
+  ]
+}
+
+# Assign Cloud Foundry Runtime Entitlement
+resource "btp_subaccount_entitlement" "cloud_foundry_runtime_entitlement" {
+  subaccount_id = btp_subaccount.subaccount.id
+  service_name  = "APPLICATION_RUNTIME"
+  plan_name     = "MEMORY"
+  amount        = 2
+
+  depends_on = [
+    btp_subaccount.subaccount
+  ]
+}
+
+# Enable Cloud Foundry Environment
+resource "btp_subaccount_environment_instance" "cloud_foundry_environment_instance" {
+  subaccount_id    = btp_subaccount.subaccount.id
+  name             = "cloud-foundry-environment"
+  environment_type = "cloudfoundry"
+  service_name     = "cloudfoundry"
+  plan_name        = "trial"
+
+  parameters = jsonencode({
+    instance_name = "web-applications"
+  })
+
+  depends_on = [
+    btp_subaccount.subaccount,
+    btp_subaccount_entitlement.cloud_foundry_environment_entitlement,
+    btp_subaccount_entitlement.cloud_foundry_runtime_entitlement
+  ]
+}
+
+# Output the Api URL of the cloudfoundry environment for the subaccount
+output "cloudfoundry_api_url" {
+  description = "Api URL of the cloudfoundry environment for the subaccount"
+  type        = string
+  value       = jsondecode(btp_subaccount_environment_instance.cloud_foundry_environment_instance.labels)["API Endpoint"]
+}
+

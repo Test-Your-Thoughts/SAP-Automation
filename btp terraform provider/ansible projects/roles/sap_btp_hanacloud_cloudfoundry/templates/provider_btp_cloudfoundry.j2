@@ -1,0 +1,23 @@
+terraform {
+  required_providers {
+    btp = {
+      source  = "SAP/btp"
+      version = "~> 1.25.0"
+    }
+    cloudfoundry = {
+      source  = "cloudfoundry/cloudfoundry"
+      version = "~> 1.16.0"
+    }
+  }
+}
+
+# Configure the BTP Provider
+provider "btp" {
+  globalaccount = "{{ btp_globalaccount_name }}"
+}
+
+# Configure the Cloudfoundry Provider
+provider "cloudfoundry" {
+  api_url  = "{{ cloudfoundry_api_url }}"
+}
+

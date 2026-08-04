@@ -1,0 +1,21 @@
+---
+
+- hosts: localhost
+  gather_facts: false
+
+  vars:
+    btp_globalaccount_name: "dc63a141trial-ga"
+    btp_subaccount_name: "devops-ansible-terraform"
+    btp_subaccount_region: "us10"
+    cloudfoundry_space_name: "python-space"
+    hana_cloud_admin_user: ""
+    hanadb_instance_name: "hdb-terraform"
+    hanadb_schema_password: "Hitachi@123"
+
+  tasks:
+
+    - ansible.builtin.import_role:
+        name: sap_btp_hanacloud_cloudfoundry
+        tasks_from: main.yml
+
+...

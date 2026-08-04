@@ -1,0 +1,10 @@
+---
+
+- name: pass
+  ansible.builtin.debug:
+    msg: |
+      {{ '-' * ((pass_msg | length) + 11) }}
+      --- ✅ {{ pass_msg }}
+      {{ '-' * ((pass_msg | length) + 11) }}
+
+...

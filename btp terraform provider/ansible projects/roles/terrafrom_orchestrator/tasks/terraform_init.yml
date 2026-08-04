@@ -1,0 +1,25 @@
+---
+
+- name: log
+  vars:
+    info_msg: "initiating terraform configuration."
+  ansible.builtin.import_role: { name: common_reusable_tasks, tasks_from: info_msg.yml }
+
+- name: initiate terraform configuration
+  ansible.builtin.shell:
+    executable: /bin/bash
+    chdir: "{{ terraform_directory }}"
+    cmd: terraform init -no-color
+  register: __terraform_init
+  changed_when: false
+
+- name: log output
+  ansible.builtin.debug:
+    var: __terraform_init['stdout']
+
+- name: log
+  vars:
+    pass_msg: "successfully initiated terraform configuration."
+  ansible.builtin.import_role: { name: common_reusable_tasks, tasks_from: pass_msg.yml }
+
+...

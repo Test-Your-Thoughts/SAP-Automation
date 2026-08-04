@@ -1,0 +1,10 @@
+---
+
+- name: info
+  ansible.builtin.debug:
+    msg: |
+      {{ '-' * ((info_msg | length) + 11) }}
+      --- ℹ️ {{ info_msg }}
+      {{ '-' * ((info_msg | length) + 11) }}
+
+...

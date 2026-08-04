@@ -1,0 +1,10 @@
+---
+
+- name: fail
+  ansible.builtin.fail:
+    msg: |
+      {{ '-' * ((fail_msg | length) + 8) }}
+      --- {{ fail_msg }}
+      {{ '-' * ((fail_msg | length) + 8) }}
+
+...

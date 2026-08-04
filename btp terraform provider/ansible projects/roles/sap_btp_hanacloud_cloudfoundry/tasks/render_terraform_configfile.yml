@@ -1,0 +1,31 @@
+---
+
+- vars:
+    terraform_configfile_name: >-
+      {{
+        (jinja2_file_name | replace('.j2', '.tf')) if ('provider' not in jinja2_file_name) else
+        ('provider.tf')
+      }}
+  block:
+
+    - name: log
+      vars:
+        info_msg: "rendering terraform configfile {{ terraform_configfile_name }} ({{ config_objective }})"
+      ansible.builtin.import_role: { name: common_reusable_tasks, tasks_from: info_msg.yml }
+
+    - name: "render terraform configfile"
+      ansible.builtin.template:
+        src:  "{{ jinja2_file_name }}"
+        dest: "{{ terraform_directory }}/{{ terraform_configfile_name }}"
+      register: __render_file
+
+    - name: log
+      vars:
+        pass_msg: >-
+          {{
+            ("successfully rendered %s" % terraform_configfile_name) if __render_file['changed'] else
+            ("%s already exists at desired state" % terraform_configfile_name)
+          }}
+      ansible.builtin.import_role: { name: common_reusable_tasks, tasks_from: pass_msg.yml }
+
+...

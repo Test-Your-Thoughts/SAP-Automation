@@ -1,0 +1,25 @@
+---
+
+- name: log
+  vars:
+    info_msg: "validating terraform configuration."
+  ansible.builtin.import_role: { name: common_reusable_tasks, tasks_from: info_msg.yml }
+
+- name: validate terraform configuration
+  ansible.builtin.shell:
+    executable: /bin/bash
+    chdir: "{{ terraform_directory }}"
+    cmd: terraform validate -no-color
+  register: __terraform_validate
+  changed_when: false
+
+- name: log output
+  ansible.builtin.debug:
+    var: __terraform_validate['stdout']
+
+- name: log
+  vars:
+    pass_msg: "successfully validated terraform configuration."
+  ansible.builtin.import_role: { name: common_reusable_tasks, tasks_from: pass_msg.yml }
+
+...

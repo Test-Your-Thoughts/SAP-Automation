@@ -1,0 +1,25 @@
+---
+
+- name: log
+  vars:
+    info_msg: "creating plan for terraform changes."
+  ansible.builtin.import_role: { name: common_reusable_tasks, tasks_from: info_msg.yml }
+
+- name: create plan for terraform changes
+  ansible.builtin.shell:
+    executable: /bin/bash
+    chdir: "{{ terraform_directory }}"
+    cmd: terraform plan -out={{ terraform_plan_file }} -no-color
+  register: __terraform_plan
+  changed_when: false
+
+- name: log output
+  ansible.builtin.debug:
+    var: __terraform_plan['stdout']
+
+- name: log
+  vars:
+    pass_msg: "successfully created plan for terraform changes."
+  ansible.builtin.import_role: { name: common_reusable_tasks, tasks_from: pass_msg.yml }
+
+...

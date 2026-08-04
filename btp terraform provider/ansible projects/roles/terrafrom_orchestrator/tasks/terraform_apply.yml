@@ -1,0 +1,25 @@
+---
+
+- name: log
+  vars:
+    info_msg: "applying terraform changes."
+  ansible.builtin.import_role: { name: common_reusable_tasks, tasks_from: info_msg.yml }
+
+- name: apply terraform changes
+  ansible.builtin.shell:
+    executable: /bin/bash
+    chdir: "{{ terraform_directory }}"
+    cmd: terraform apply -auto-approve -no-color {{ terraform_plan_file }}
+  register: __terraform_apply
+  changed_when: true
+
+- name: log output
+  ansible.builtin.debug:
+    var: __terraform_apply['stdout']
+
+- name: log
+  vars:
+    pass_msg: "successfully applied terraform changes."
+  ansible.builtin.import_role: { name: common_reusable_tasks, tasks_from: pass_msg.yml }
+
+...

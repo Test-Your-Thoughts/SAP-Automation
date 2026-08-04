@@ -1,0 +1,35 @@
+# ===================================
+# SAP HANA Cloud DB Instance Setup
+# ===================================
+
+# Assign SAP HANA Cloud Entitlement
+resource "btp_subaccount_entitlement" "hana_cloud_entitlement" {
+  subaccount_id = btp_subaccount.subaccount.id
+  service_name  = "hana-cloud"
+  plan_name     = "hana-free"
+
+  depends_on = [
+    btp_subaccount.subaccount
+  ]
+}
+
+# Create SAP HANA Cloud Database Instance
+resource "btp_subaccount_service_instance" "hana_cloud_service_instance" {
+  subaccount_id         = btp_subaccount.subaccount.id
+  service_offering_name = "hana-cloud"
+  serviceplan_name      = "hana-free"
+  name                  = "{{ hanadb_instance_name }}"
+
+  parameters = jsonencode({
+    data = {
+      "memory": 16,
+      "systempassword": "{{ hanadb_schema_password }}",
+      "edition": "cloud"
+    }
+  })
+
+  depends_on = [
+    btp_subaccount_entitlement.hana_cloud_entitlement
+  ]
+}
+

@@ -1,0 +1,31 @@
+---
+
+- name: terraform init phase
+  ansible.builtin.import_tasks:
+    file: terraform_init.yml
+
+- name: terraform validate phase
+  ansible.builtin.import_tasks:
+    file: terraform_validate.yml
+
+- name: set fact for terraform plan file
+  ansible.builtin.set_fact:
+    terraform_plan_file: "{{ terraform_directory }}/terraform_plan_{{ '%d-%h-%Y_%X' | strftime }}"
+
+- name: terraform plan phase
+  ansible.builtin.import_tasks:
+    file: terraform_plan.yml
+
+- name: fail
+  when:
+    - ('0 to destroy'                                              not in __terraform_plan['stdout'])
+    - ('No changes. Your infrastructure matches the configuration' not in __terraform_plan['stdout'])
+  vars:
+    fail_msg: "terraform plan says destroy something, please check what's the matter."
+  ansible.builtin.import_role: { name: common_reusable_tasks, tasks_from: fail_msg.yml }
+
+- name: terraform apply phase
+  ansible.builtin.import_tasks:
+    file: terraform_apply.yml
+
+...
