@@ -10,7 +10,7 @@
     cloudfoundry_space_name: "python-space"
     hana_cloud_admin_user: ""
     hanadb_instance_name: "hdb-terraform"
-    hanadb_schema_password: "Hitachi@123"
+    hanadb_schema_password: ""
 
   tasks:
 
